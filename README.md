@@ -11,6 +11,7 @@
 - **성능 최적화**: Redis 캐싱 및 API 호출 최적화로 서버 부하 90% 감소
 
 ## 시스템 아키텍처
+<img width="1689" height="374" alt="Screenshot 2025-08-18 at 18 47 36" src="https://github.com/user-attachments/assets/84da8874-cae1-497f-a60e-58b132fb2c9c" />
 
 ## Redis 도입 및 성능 최적화
 
