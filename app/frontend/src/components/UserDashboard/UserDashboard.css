@@ -1,0 +1,53 @@
+.user-dashboard {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.user-dashboard h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.user-info {
+  margin-bottom: 25px;
+}
+
+.info-item {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-item strong {
+  margin-right: 12px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+}

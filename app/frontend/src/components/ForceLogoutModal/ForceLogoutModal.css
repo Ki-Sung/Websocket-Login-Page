@@ -1,0 +1,93 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: 30px;
+  color: #2d3748;
+}
+
+.warning-message {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+.reason, .timestamp, .new-device {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 4px solid #e53e3e;
+}
+
+.reason strong, .timestamp strong, .new-device strong {
+  color: #2d3748;
+}
+
+.modal-footer {
+  padding: 20px 30px 30px;
+  text-align: center;
+}
+
+.confirm-button {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.confirm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 20px;
+  }
+  
+  .modal-header, .modal-body, .modal-footer {
+    padding: 20px;
+  }
+}
