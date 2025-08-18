@@ -13,6 +13,69 @@
 ## 시스템 아키텍처
 <img width="1689" height="374" alt="Screenshot 2025-08-18 at 18 47 36" src="https://github.com/user-attachments/assets/84da8874-cae1-497f-a60e-58b132fb2c9c" />
 
+## 시스템 전체 플로우 
+```mermaid
+%%{init: {'themeVariables': { 'fontSize': '10px', 'fontFamily': 'arial', 'nodeSpacing': 20, 'rankSpacing': 30}}}%%
+flowchart TD
+    A[사용자 시작] --> B{로그인 시도}
+    
+    B -->|성공| C[Redis 세션 생성]
+    B -->|실패| D[에러 메시지 표시]
+    
+    C --> E[WebSocket 연결]
+    E --> F{연결 성공?}
+    
+    F -->|성공| G[메인 대시보드]
+    F -->|실패| H[연결 오류 처리]
+    
+    G --> I{사용자 활동}
+    
+    I -->|로그아웃| J[세션 정리]
+    I -->|페이지 새로고침| K[연결 상태 확인]
+    I -->|중복 로그인 감지| L[강제 로그아웃]
+    
+    J --> M[Redis에서 세션 삭제]
+    K --> N{연결 상태?}
+    L --> O[새 세션 생성]
+    
+    N -->|연결됨| G
+    N -->|연결 끊김| P[재연결 시도]
+    
+    O --> Q[새 세션 생성]
+    P --> R{재연결 성공?}
+    
+    R -->|성공| G
+    R -->|실패| S[연결 오류 표시]
+    
+    Q --> G
+    M --> T[로그인 페이지로]
+    S --> T
+    
+    D --> T
+    H --> T
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:1px,color:#000
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px,color:#000
+    style T fill:#ffcdd2,stroke:#c62828,stroke-width:1px,color:#000
+    style C fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    style M fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    style Q fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style I fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style N fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style R fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style E fill:#e8f5e8,stroke:#388e3c,stroke-width:1px,color:#000
+    style H fill:#ffebee,stroke:#d32f2f,stroke-width:1px,color:#000
+    style J fill:#fff8e1,stroke:#f57f17,stroke-width:1px,color:#000
+    style K fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style L fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    style O fill:#fff3e0,stroke:#ef6c00,stroke-width:1px,color:#000
+    style P fill:#e8f5e8,stroke:#388e3c,stroke-width:1px,color:#000
+    style S fill:#ffebee,stroke:#d32f2f,stroke-width:1px,color:#000
+    style D fill:#ffebee,stroke:#d32f2f,stroke-width:1px,color:#000
+```
+
 ## Redis 도입 및 성능 최적화
 
 ### Redis 설치 및 설정
